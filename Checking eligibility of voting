@@ -1,0 +1,43 @@
+//EXPERIMENT 15
+//Name:- Prateek Sinha
+//Class:- ENTC A3
+//PRN:-24070123077
+
+#include<iostream>
+using namespace std;
+
+class VotingException {
+    string message;
+public:
+    VotingException(string msg) : message(msg) {}
+    void showMessage() {
+        cout << "\nERROR! " << message << endl;
+    }
+};
+
+void checkEligibility(int age) {
+    if (age < 18) {
+        throw VotingException("You are not eligible for voting.");
+    } else {
+        cout << "Your age is: " << age << " — You are eligible to vote!" << endl;
+    }
+}
+
+int main() {
+    int age;
+    cout << "Enter your age: ";
+    cin >> age;
+
+    try {
+        checkEligibility(age);
+    }
+    catch (VotingException ve) {
+        ve.showMessage();
+    }
+
+    return 0;
+}
+/*OutPut:-
+Enter your age: 19
+Your age is: 19 — You are eligible to vote!
+*/
